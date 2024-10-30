@@ -15,10 +15,12 @@
 		B678F5442CD1183400F1D7AC /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B678F5432CD1183400F1D7AC /* RxCocoa */; };
 		B678F5462CD1183400F1D7AC /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B678F5452CD1183400F1D7AC /* RxRelay */; };
 		B678F5482CD1183400F1D7AC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B678F5472CD1183400F1D7AC /* RxSwift */; };
+		B678F56B2CD2600300F1D7AC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B678F56A2CD2600300F1D7AC /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B678F48F2CCCDD9200F1D7AC /* StudyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B678F56A2CD2600300F1D7AC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -64,6 +66,7 @@
 		B678F4862CCCDD9200F1D7AC = {
 			isa = PBXGroup;
 			children = (
+				B678F56A2CD2600300F1D7AC /* .gitignore */,
 				B678F4912CCCDD9200F1D7AC /* StudyBook */,
 				B678F4902CCCDD9200F1D7AC /* Products */,
 			);
@@ -155,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B678F56B2CD2600300F1D7AC /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
