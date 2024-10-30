@@ -9,19 +9,21 @@ import Foundation
 import Alamofire
 
 public class NetworkManager {
-    private let headers: HTTPHeaders = {
-        let header = HTTPHeader(name: "Authorization", value: "")
-        return HTTPHeaders([header])
-    }()
     private let session: SessionProtocol
-    
+    private lazy var apikey: String = getAPIKey()
+        
+    private var headers: HTTPHeaders {
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(apikey)")
+        return HTTPHeaders([header])
+    }
+
     init(session: SessionProtocol) {
         self.session = session
     }
     
     func fetchData<T: Decodable>(url: String,
-                               method: HTTPMethod,
-                               parameters: Parameters?) async -> Result<T, NetworkError> {
+                                 method: HTTPMethod,
+                                 parameters: Parameters?) async -> Result<T, NetworkError> {
         
         guard let url = URL(string: url) else {
             return .failure(.urlError)
@@ -43,13 +45,20 @@ public class NetworkManager {
         switch response.statusCode {
         case 200...300:
             do {
-                let data = try JSONDecoder().decode(T.self, from: data)
-                return .success(data)
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
+                return .success(decodedData)
             } catch {
                 return .failure(.failToDecode(error.localizedDescription))
             }
             
         default: return .failure(.serverError(response.statusCode))
         }
+    }
+}
+
+extension NetworkManager {
+    private func getAPIKey() -> String {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else { return "" }
+        return apiKey
     }
 }
