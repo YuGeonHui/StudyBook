@@ -8,6 +8,12 @@
 import Foundation
 import Alamofire
 
+protocol NetworkManagerProtocol {
+    func fetchData<T: Decodable>(url: String,
+                                 method: HTTPMethod,
+                                 parameters: Parameters?) -> Result<T, NetworkError>
+}
+
 public class NetworkManager {
     private let session: SessionProtocol
     private lazy var apikey: String = getAPIKey()
