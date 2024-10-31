@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B6494F582CD2695E00EBB7C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B6494F572CD2695E00EBB7C2 /* Alamofire */; };
+		B66BC7642CD3C11C00AA4AEC /* StudyBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B66BC7622CD3C11C00AA4AEC /* StudyBook.xcdatamodeld */; };
 		B678F56B2CD2600300F1D7AC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B678F56A2CD2600300F1D7AC /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B66BC7632CD3C11C00AA4AEC /* StudyBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StudyBook.xcdatamodel; sourceTree = "<group>"; };
 		B678F48F2CCCDD9200F1D7AC /* StudyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B678F56A2CD2600300F1D7AC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +54,7 @@
 		B678F4862CCCDD9200F1D7AC = {
 			isa = PBXGroup;
 			children = (
+				B66BC7622CD3C11C00AA4AEC /* StudyBook.xcdatamodeld */,
 				B678F56A2CD2600300F1D7AC /* .gitignore */,
 				B678F4912CCCDD9200F1D7AC /* StudyBook */,
 				B678F4902CCCDD9200F1D7AC /* Products */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B66BC7642CD3C11C00AA4AEC /* StudyBook.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +379,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B66BC7622CD3C11C00AA4AEC /* StudyBook.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B66BC7632CD3C11C00AA4AEC /* StudyBook.xcdatamodel */,
+			);
+			currentVersion = B66BC7632CD3C11C00AA4AEC /* StudyBook.xcdatamodel */;
+			path = StudyBook.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B678F4872CCCDD9200F1D7AC /* Project object */;
 }
