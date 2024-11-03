@@ -12,6 +12,8 @@ public protocol UserListUseCaseProtocol {
     func getFavoriteUser() -> Result<[UserListItem], CoreDataError>
     func saveFavoriteUser(user: UserListItem) -> Result<Bool, CoreDataError>
     func deleteFavoriteUser(userID: Int) -> Result<Bool, CoreDataError>
+    func checkFavoriteState(userList: [UserListItem], favoriteUsers: [UserListItem]) -> [(user: UserListItem, isFavorite: Bool)]
+    func converListToDictionary(favoriteUsers: [UserListItem]) -> [String: [UserListItem]] // 초성검색 
 }
 
 public struct UserListUseCase: UserListUseCaseProtocol {
@@ -34,5 +36,22 @@ public struct UserListUseCase: UserListUseCaseProtocol {
     
     public func deleteFavoriteUser(userID: Int) -> Result<Bool, CoreDataError> {
         return repository.deleteFavoriteUser(userID: userID)
+    }
+    
+    public func checkFavoriteState(userList: [UserListItem], favoriteUsers: [UserListItem]) -> [(user: UserListItem, isFavorite: Bool)] {
+        let favoriteSet = Set(favoriteUsers)
+        return userList.map { user in
+            let isFavorite: Bool = favoriteSet.contains(user)
+            return (user: user, isFavorite: isFavorite)
+        }
+    }
+    
+    public func converListToDictionary(favoriteUsers: [UserListItem]) -> [String : [UserListItem]] {
+        return favoriteUsers.reduce(into: [String: [UserListItem]]()) { dict, user in
+            if let firstString = user.login.first {
+                let key = String(firstString).uppercased()
+                dict[key, default: []].append(user)
+            }
+        }
     }
 }
