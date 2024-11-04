@@ -12,10 +12,21 @@
 		B678F56B2CD2600300F1D7AC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B678F56A2CD2600300F1D7AC /* .gitignore */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B6980B842CD8E0B8002BC6E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B678F4872CCCDD9200F1D7AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B678F48E2CCCDD9200F1D7AC;
+			remoteInfo = StudyBook;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		B66BC7632CD3C11C00AA4AEC /* StudyBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StudyBook.xcdatamodel; sourceTree = "<group>"; };
 		B678F48F2CCCDD9200F1D7AC /* StudyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B678F56A2CD2600300F1D7AC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B6980B802CD8E0B8002BC6E1 /* StudyBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -37,6 +48,11 @@
 			path = StudyBook;
 			sourceTree = "<group>";
 		};
+		B6980B812CD8E0B8002BC6E1 /* StudyBookTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = StudyBookTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +61,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6494F582CD2695E00EBB7C2 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6980B7D2CD8E0B8002BC6E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +80,7 @@
 				B66BC7622CD3C11C00AA4AEC /* StudyBook.xcdatamodeld */,
 				B678F56A2CD2600300F1D7AC /* .gitignore */,
 				B678F4912CCCDD9200F1D7AC /* StudyBook */,
+				B6980B812CD8E0B8002BC6E1 /* StudyBookTests */,
 				B678F4902CCCDD9200F1D7AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				B678F48F2CCCDD9200F1D7AC /* StudyBook.app */,
+				B6980B802CD8E0B8002BC6E1 /* StudyBookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +120,29 @@
 			productReference = B678F48F2CCCDD9200F1D7AC /* StudyBook.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B6980B7F2CD8E0B8002BC6E1 /* StudyBookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6980B862CD8E0B8002BC6E1 /* Build configuration list for PBXNativeTarget "StudyBookTests" */;
+			buildPhases = (
+				B6980B7C2CD8E0B8002BC6E1 /* Sources */,
+				B6980B7D2CD8E0B8002BC6E1 /* Frameworks */,
+				B6980B7E2CD8E0B8002BC6E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6980B852CD8E0B8002BC6E1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B6980B812CD8E0B8002BC6E1 /* StudyBookTests */,
+			);
+			name = StudyBookTests;
+			packageProductDependencies = (
+			);
+			productName = StudyBookTests;
+			productReference = B6980B802CD8E0B8002BC6E1 /* StudyBookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +155,10 @@
 				TargetAttributes = {
 					B678F48E2CCCDD9200F1D7AC = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					B6980B7F2CD8E0B8002BC6E1 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B678F48E2CCCDD9200F1D7AC;
 					};
 				};
 			};
@@ -128,6 +180,7 @@
 			projectRoot = "";
 			targets = (
 				B678F48E2CCCDD9200F1D7AC /* StudyBook */,
+				B6980B7F2CD8E0B8002BC6E1 /* StudyBookTests */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +191,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B678F56B2CD2600300F1D7AC /* .gitignore in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6980B7E2CD8E0B8002BC6E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +212,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6980B7C2CD8E0B8002BC6E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6980B852CD8E0B8002BC6E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B678F48E2CCCDD9200F1D7AC /* StudyBook */;
+			targetProxy = B6980B842CD8E0B8002BC6E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B678F4A32CCCDD9300F1D7AC /* Debug */ = {
@@ -338,6 +413,42 @@
 			};
 			name = Release;
 		};
+		B6980B872CD8E0B8002BC6E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FWGZZW9F5T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.geonhui.StudyBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StudyBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StudyBook";
+			};
+			name = Debug;
+		};
+		B6980B882CD8E0B8002BC6E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FWGZZW9F5T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.geonhui.StudyBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StudyBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StudyBook";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -355,6 +466,15 @@
 			buildConfigurations = (
 				B678F4A32CCCDD9300F1D7AC /* Debug */,
 				B678F4A42CCCDD9300F1D7AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6980B862CD8E0B8002BC6E1 /* Build configuration list for PBXNativeTarget "StudyBookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6980B872CD8E0B8002BC6E1 /* Debug */,
+				B6980B882CD8E0B8002BC6E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
