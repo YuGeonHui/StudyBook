@@ -16,14 +16,14 @@ protocol UserListViewModelProtocol {
 // 이벤트(VC) -> 가공 or 외부에서 데이터 호출 or 뷰 데이터를 전달 (VM)  -> VC
 public final class UserListViewModel: UserListViewModelProtocol {
     private let disposedBag = DisposeBag()
-    private let usecase: UserListResult
-    private let erorr = PublishRelay<String>()
+    private let usecase: UserListUseCase
+    private let errorMessage = PublishRelay<String>()
     
     private let fetchUserList = BehaviorRelay<[UserListItem]>(value: [])
     private let allFavoriteUserList = BehaviorRelay<[UserListItem]>(value: [])
     private let favoriteUserList = BehaviorRelay<[UserListItem]>(value: [])
     
-    public init(usecase: UserListResult) {
+    public init(usecase: UserListUseCase) {
         self.usecase = usecase
     }
     
@@ -43,7 +43,11 @@ public final class UserListViewModel: UserListViewModelProtocol {
     public func transform(input: Input) -> Output {
         input.query
             .withUnretained(self)
-            .bind(onNext: { $0.0.fetchUserInfo(query: $0.1) })
+            .filter { $0.0.validateQuery(query: $0.1) }
+            .bind(onNext: {
+                $0.0.fetchUserInfo(query: $0.1, page: 0)
+                $0.0.getFavoriteUsers(query: $0.1)
+            })
             .disposed(by: disposedBag)
         
         input.saveFavorite
@@ -66,7 +70,7 @@ public final class UserListViewModel: UserListViewModelProtocol {
             return cellData
         }
         
-        return Output(cellData: cellData, error: erorr.asObservable())
+        return Output(cellData: cellData, error: errorMessage.asObservable())
     }
     
     private func fetchMore() {
@@ -81,8 +85,32 @@ public final class UserListViewModel: UserListViewModelProtocol {
         
     }
     
-    private func fetchUserInfo(query: String) {
-        
+    private func fetchUserInfo(query: String, page: Int) {
+        guard let urlAllorwdQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        Task {
+            let result = await usecase.fetchUser(query: query, page: page)
+            switch result {
+            case .success(let users):
+                page == 0 ? fetchUserList.accept(users.items) : fetchUserList.accept(fetchUserList.value + users.items)
+            case .failure(let error):
+                errorMessage.accept(error.description)
+            }
+        }
+    }
+    
+    private func getFavoriteUsers(query: String) {
+        let result = usecase.getFavoriteUser()
+        switch result {
+        case .success(let users):
+            query.isEmpty ? favoriteUserList.accept(users) : favoriteUserList.accept(users.filter { $0.login.contains(query) })
+            allFavoriteUserList.accept(users)
+        case .failure(let error):
+            errorMessage.accept(error.localizedDescription)
+        }
+    }
+    
+    private func validateQuery(query: String) -> Bool {
+        return query.isEmpty ? false : true
     }
 }
 
