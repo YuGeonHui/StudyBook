@@ -51,13 +51,15 @@ public final class UserListViewModel: UserListViewModelProtocol {
             .disposed(by: disposedBag)
         
         input.saveFavorite
+            .withLatestFrom(input.query) { ($0, $1) }
             .withUnretained(self)
-            .bind(onNext: { $0.0.saveFavoriteUser(user: $0.1) })
+            .bind(onNext: { $0.saveFavoriteUser(user: $1.0, query: $1.1) })
             .disposed(by: disposedBag)
         
         input.deleteFavorite
+            .withLatestFrom(input.query) { ($0, $1) }
             .withUnretained(self)
-            .bind(onNext: { $0.0.deleteFavoriteUser(id: $0.1) })
+            .bind(onNext: { $0.deleteFavoriteUser(id: $1.0, query: $1.1)} )
             .disposed(by: disposedBag)
         
         input.fetchMore
@@ -77,16 +79,28 @@ public final class UserListViewModel: UserListViewModelProtocol {
         
     }
     
-    private func deleteFavoriteUser(id: Int) {
-        
+    private func deleteFavoriteUser(id: Int, query: String) {
+        let result = usecase.deleteFavoriteUser(userID: id)
+        switch result {
+        case .success(let success):
+            getFavoriteUsers(query: query)
+        case .failure(let error):
+            errorMessage.accept(error.localizedDescription)
+        }
     }
     
-    private func saveFavoriteUser(user: UserListItem) {
-        
+    private func saveFavoriteUser(user: UserListItem, query: String) {
+        let result = usecase.saveFavoriteUser(user: user)
+        switch result {
+        case .success:
+            getFavoriteUsers(query: query)
+        case .failure(let error):
+            errorMessage.accept(error.localizedDescription)
+        }
     }
     
     private func fetchUserInfo(query: String, page: Int) {
-        guard let urlAllorwdQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let _ = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         Task {
             let result = await usecase.fetchUser(query: query, page: page)
             switch result {
